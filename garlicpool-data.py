@@ -91,7 +91,7 @@ def main():
                   f"Total       : {datas['confirmed'] + datas['unconfirmed']:.6f} GRLC\n")
         print("Worker Information")
         [print(f"{a['username']}\t{a['hashrate']} KH/s\t{a['difficulty']}") for a in datas['active_workers']]
-        print(f"\nTotal Hashrate : {datas['hashrate']} KH/s")
+        print(f"\nTotal Hashrate : {round(sum([float(a['hashrate']) for a in datas['active_workers']]), 2)} KH/s")
 
         # Wait for 10 seconds
         time.sleep(10)
