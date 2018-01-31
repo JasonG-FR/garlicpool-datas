@@ -81,18 +81,20 @@ def main():
                   f"GRLC Account Balance\n"
                   f"Confirmed   : {datas['confirmed']:.6f} GRLC\n"
                   f"Unconfirmed : {datas['unconfirmed']:.6f} GRLC\n"
-                  f"Orphaned    : {datas['orphaned']:.6f} GRLC\n")
+                  f"Orphaned    : {datas['orphaned']:.6f} GRLC\n"
+                  f"Total       : {datas['confirmed'] + datas['unconfirmed']:.6f} GRLC\n")
         else:
             print(f"\n"
                   f"GRLC Account Balance\n"
                   f"Confirmed   : {datas['confirmed']:.6f} GRLC\n"
-                  f"Unconfirmed : {datas['unconfirmed']:.6f} GRLC\n")
+                  f"Unconfirmed : {datas['unconfirmed']:.6f} GRLC\n"
+                  f"Total       : {datas['confirmed'] + datas['unconfirmed']:.6f} GRLC\n")
         print("Worker Information")
         [print(f"{a['username']}\t{a['hashrate']} KH/s\t{a['difficulty']}") for a in datas['active_workers']]
         print(f"\nTotal Hashrate : {datas['hashrate']} KH/s")
 
-        # Wait for 3 seconds
-        time.sleep(3)
+        # Wait for 10 seconds
+        time.sleep(10)
 
 
 if __name__ == '__main__':
