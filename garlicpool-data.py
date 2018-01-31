@@ -12,10 +12,9 @@ import requests
 import threading
 
 
-def get_hashrate(url, datas):
+def get_username(url):
     r = requests.get(f"{url}&action=getuserstatus")
-    datas['username'] = r.json()['getuserstatus']['data']['username']
-    datas['hashrate'] = round(float(r.json()['getuserstatus']['data']['hashrate']), 2)
+    return r.json()['getuserstatus']['data']['username']
 
 
 def get_balance(url, datas):
@@ -51,12 +50,11 @@ def main():
         with open("creds", "w") as f:
             f.write(f"{user_id}\n{api_key}")
 
-    while True:
-        datas = {}
-        url = f"https://garlicpool.org/index.php?page=api&api_key={api_key}&id={user_id}"
-        # Get the current hashrate and username
-        t_hash = threading.Thread(target=get_hashrate, args=(url, datas,))
+    url = f"https://garlicpool.org/index.php?page=api&api_key={api_key}&id={user_id}"
+    username = get_username(url)
 
+    while True:
+        datas = {'username': username}
         # Get the account balance
         t_balance = threading.Thread(target=get_balance, args=(url, datas,))
 
@@ -64,12 +62,10 @@ def main():
         t_workers = threading.Thread(target=get_workers, args=(url, datas,))
 
         # Start the threads
-        t_hash.start()
         t_balance.start()
         t_workers.start()
 
         # Wait for all of them to finish
-        t_hash.join()
         t_balance.join()
         t_workers.join()
 
