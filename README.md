@@ -1,7 +1,8 @@
 # Garlicpool-datas
-Those scripts allow you to fetch your Garlicpool account stats and balance from the Garlicpool API (https://garlicpool.org/) from your terminal.
+Those scripts allow you to fetch your Garlicpool account stats and Garlicoin balance from the Garlicpool API (https://garlicpool.org/) from your terminal.
 
 If this was usefull for you, you can send me some tasty garlic here : GSYX3u2upzXziiCb9FtJd47k4RfJLVw1FT
+
 Thanks :)
 
 # Account Balance
